@@ -2,12 +2,20 @@
 
 namespace mvc\model;
 
-class Med
+class Patient
 {
     private $id;
-    private $name;
-    private $cat;
-    private $insured;
+    private $naam;
+    private $huidigeMed;
+    private $medHis;
+    private $notes;
+    private $adres;
+    private $woonplaats;
+    private $zknummer;
+    private $geboortedatum;
+    private $soortVerzekering;
+    
+    
 
     public function __get($property) {
         if (property_exists($this, $property)) {
