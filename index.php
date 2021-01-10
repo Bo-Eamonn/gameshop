@@ -41,5 +41,5 @@ $controller = new Controller();
             $controller->showHomeAction();
         }
     } else {
-        $controller->showHomeAction();
+        $controller->showProductAction();
     }

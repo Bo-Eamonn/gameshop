@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthOne | Inloggen</title>
-    <link rel="stylesheet" href="/HealthOne_MVC/assets/css/style.css">
+    <link rel="stylesheet" href="/gameshop/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 
 <body>
     <div class="login">
-    <img src="/healthone_MVC/assets/images/logo.png" alt="logo">
+    <img src="/gameshop/assets/images/logo.png" alt="logo">
     <?php
      
     ?>
@@ -26,7 +26,7 @@
             <button name="inloggen" type="submit">Inloggen</button>
         </form>
     </div>
-    <script src="/healthone_mvc/assets/js/pswrdToggle.js"></script>
+    <script src="/gameshop/assets/js/pswrdToggle.js"></script>
 </body>
 
 </html>

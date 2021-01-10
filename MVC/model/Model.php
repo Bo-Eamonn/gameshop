@@ -4,8 +4,7 @@ namespace mvc\model;
 
 use PDO;
 
-include_once ('mvc/model/Med.php');
-include_once ('mvc/model/Patient.php');
+include_once ('mvc/model/product.php');
 include_once ('mvc/model/User.php');
  
 class Model
@@ -13,7 +12,7 @@ class Model
     private $db;
 
     private function connectDb(){
-        $this->db = new PDO('mysql:host=localhost;dbname=healthone', "root", "");
+        $this->db = new PDO('mysql:host=localhost;dbname=gameshop', "root", "");
     }
 //Login
     public function login($uname, $pswrd){
@@ -37,7 +36,7 @@ class Model
     public function logout(){    
     session_unset();
     session_destroy();
-    header("location: /healthone_mvc/");
+    header("location: /gameshop/");
     exit;
     }
 
@@ -52,11 +51,11 @@ public function getHome(){
     }
     return null;
 }
-//Create New Med
-    public function createMed($name,$cat,$insured){
+//Create New Product
+    public function createProduct($name,$cat,$insured){
         $this->connectDb();
         if ($name !='' && $cat !='' && $insured !='') {
-            $query = $this->db->prepare("INSERT INTO `med` (`id`, `name`, `cat`, `insured`) VALUES ('',:name, :cat, :insured)");
+            $query = $this->db->prepare("INSERT INTO `products` (`id`, `name`, `cat`, `insured`) VALUES ('',:name, :cat, :insured)");
             $query->bindParam(":name", $name); 
             $query->bindParam(":cat", $cat); 
             $query->bindParam(":insured", $insured); 
@@ -65,21 +64,21 @@ public function getHome(){
         }
         return -1;
     }
-//Read Med
-    public function getMed(){
+//Read Product
+    public function getProduct(){
         $this->connectDb();
-        $select = $this->db->query('SELECT * FROM `med` ');
+        $select = $this->db->query('SELECT * FROM `products` ');
         if ($select) {
-            $result=$select->fetchALL(PDO::FETCH_CLASS,Med::class);
+            $result=$select->fetchALL(PDO::FETCH_CLASS,Product::class);
             return $result;
         }
         return null;      
     }    
-//Update Med
-    public function updateMed($id,$name,$cat,$insured){
+//Update Product
+    public function updateProduct($id,$name,$cat,$insured){
         $this->connectDb();
         if ($name !='' && $cat !='' && $insured !='') {
-            $query = $this->db->prepare("UPDATE `med` SET `name`=:name, `cat`=:cat, `insured`=:insured WHERE `med`.`id`=:id");
+            $query = $this->db->prepare("UPDATE `products` SET `name`=:name, `cat`=:cat, `insured`=:insured WHERE `products`.`id`=:id");
             $query->bindParam(":id", $id);
             $query->bindParam(":name", $name);  
             $query->bindParam(":cat", $cat); 
@@ -88,24 +87,24 @@ public function getHome(){
             return $result;
         }
     } 
-//Delete MED    
-    public function deleteMed($id){
+//Delete Product    
+    public function deleteProduct($id){
         $this->connectDb();
-        $select = $this->db->prepare('DELETE FROM `med` WHERE `med`.`id`=:id');
+        $select = $this->db->prepare('DELETE FROM `products` WHERE `products`.`id`=:id');
         $select->bindParam(":id", $id);
         $result = $select->execute();
         return $result;
     }
-//Select MED
-    public function selectMed($id){
+//Select Product
+    public function selectProduct($id){
         $this->connectDb();
-        $select = $this->db->prepare("SELECT * FROM `med` WHERE `med`.`id` :id");
+        $select = $this->db->prepare("SELECT * FROM `products` WHERE `products`.`id` :id");
         $select->bindParam(":id", $id);
         $result = $select->execute();
         if ($result) {
-            $select->setFetchMode(PDO::FETCH_CLASS,Med::class);
-            $med = $select->fetch();
-            return $med;
+            $select->setFetchMode(PDO::FETCH_CLASS,Product::class);
+            $Product = $select->fetch();
+            return $Product;
         }
     return null;
     }    
@@ -163,75 +162,6 @@ public function getHome(){
             $select->setFetchMode(PDO::FETCH_CLASS,User::class);
             $user = $select->fetch();
             return $user;
-        }
-    return null;
-    }    
-//Create New Patient
-    public function createPatient($naam, $huidigeMed, $medHis, $notes, $adres, $woonplaats, $zknummer, $geboortedatum, $soortVerzekering){
-        $this->connectDb();
-        if ($naam !='' && $huidigeMed !='' && $medHis !='' && $notes !='' && $adres !='' && $woonplaats !='' && $zknummer !='' && $geboortedatum !='' && $soortVerzekering !='') {
-            $query = $this->db->prepare("INSERT INTO `patients` (`id`, `naam`, `huidigeMed`, `medHis`, `notes`, `adres`, `woonplaats`, `zknummer`, `geboortedatum`, `soortVerzekering`) VALUES ('', :naam, :huidigeMed, :medHis, :notes, :adres, :woonplaats, :zknummer, :geboortedatum, :soortVerzekering)");
-            $query->bindParam(":naam", $naam);  
-            $query->bindParam(":huidigeMed", $huidigeMed);  
-            $query->bindParam(":medHis", $medHis);  
-            $query->bindParam(":notes", $notes);  
-            $query->bindParam(":adres", $adres);  
-            $query->bindParam(":woonplaats", $woonplaats);  
-            $query->bindParam(":zknummer", $zknummer);  
-            $query->bindParam(":geboortedatum", $geboortedatum);  
-            $query->bindParam(":soortVerzekering", $soortVerzekering);  
-            $result = $query->execute();
-            return $result;
-        }
-        return -1;
-    }
-//Read Patient
-    public function getPatients(){
-        $this->connectDb();
-        $select = $this->db->query('SELECT * FROM `patients` ');
-        if ($select) {
-            $result=$select->fetchALL(PDO::FETCH_CLASS,Patient::class);
-            return $result;
-        }
-        return null;
-    }
-//Update Patient
-    public function updatePatient($id, $naam, $huidigeMed, $medHis, $notes, $adres, $woonplaats, $zknummer, $geboortedatum, $soortVerzekering){
-        $this->connectDb();
-        if ($naam !='' && $huidigeMed !='' && $medHis !='' && $notes !='' && $adres !='' && $woonplaats !='' && $zknummer !='' && $geboortedatum !='' && $soortVerzekering !='') {
-            $query = $this->db->prepare("UPDATE `patients` SET `naam`=:naam,`huidigeMed`=:huidigeMed,`medHis`=:medHis,`notes`=:notes,`adres`=:adres,`woonplaats`=:woonplaats,`zknummer`=:zknummer,`geboortedatum`=:geboortedatum,`soortVerzekering`=:soortVerzekering WHERE `patients`.`id`=:id");
-            $query->bindParam(":id", $id);  
-            $query->bindParam(":naam", $naam);  
-            $query->bindParam(":huidigeMed", $huidigeMed);  
-            $query->bindParam(":medHis", $medHis);  
-            $query->bindParam(":notes", $notes);  
-            $query->bindParam(":adres", $adres);  
-            $query->bindParam(":woonplaats", $woonplaats);  
-            $query->bindParam(":zknummer", $zknummer);  
-            $query->bindParam(":geboortedatum", $geboortedatum);  
-            $query->bindParam(":soortVerzekering", $soortVerzekering);   
-            $result = $query->execute();
-            return $result;
-        }
-    }
-//Delete Patient
-    public function deletePatient($id){
-        $this->connectDb();
-        $select = $this->db->prepare('DELETE FROM `patients` WHERE `patients`.`id`=:id');
-        $select->bindParam(":id", $id);
-        $result = $select->execute();
-        return $result;
-    }
-//Select Patient
-    public function selectPatient($id){
-        $this->connectDb();
-         $select = $this->db->prepare("SELECT * FROM `patients` WHERE `patients`.`id` :id");
-        $select->bindParam(":id", $id);
-        $result = $select->execute();
-        if ($result) {
-            $select->setFetchMode(PDO::FETCH_CLASS,Patient::class);
-            $patient = $select->fetch();
-            return $patient;
         }
     return null;
     }    

@@ -2,7 +2,7 @@
 <body class="<?php echo $_SESSION['role']?>">
     <header>
         <div>
-            <img src="/healthone_mvc/assets/images/logo.png" alt="Logo" id="logo">
+            <img src="/gameshop/assets/images/logo.png" alt="Logo" id="logo">
             <div class="search-container">
                 <form class="search-box">
                     <input type="text" placeholder="Zoeken" title="Zoek naar patienten" name="search" autocomplete="off">

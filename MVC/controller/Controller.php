@@ -3,10 +3,8 @@
 namespace mvc\controller;
 include_once "mvc/view/View.php";
 use mvc\view\View;
-include_once "mvc/model/Patient.php";
-use mvc\model\Patient;
-include_once "mvc/model/Med.php";
-use mvc\model\Med;
+include_once "mvc/model/Product.php";
+use mvc\model\Product;
 include_once "mvc/model/User.php";
 use mvc\model\User;
 include_once "mvc/model/Model.php";
@@ -19,37 +17,37 @@ class Controller{
         $this->model = new Model();
         $this->view = new View($this->model);
     }
-//CRUD MED
-    public function showMedAction(){
-        $result = $this->model->getMed();
-        $this->view->showMed($result);
+//CRUD Product
+    public function showProductAction(){
+        $result = $this->model->getProduct();
+        $this->view->showProduct($result);
     }
-    public function addMedAction(){
+    public function addProductAction(){
         $result = "";
-        $this->view->createMed($result);
+        $this->view->createProduct($result);
     }
-    public function saveMed() {
+    public function saveProduct() {
         $name = filter_input(INPUT_POST,'name');
         $cat = $_POST["cat"];
         $insured = filter_input(INPUT_POST,'insured');
-        $this->model->createMed($name, $cat, $insured);
-        $this->showMedAction();
+        $this->model->createProduct($name, $cat, $insured);
+        $this->showProductAction();
     }
-    public function deleteMed() {
-        $id = $_POST["deleteMed"];
-        $delMed = $this->model->deleteMed($id);
-        $this->showMedAction();
+    public function deleteProduct() {
+        $id = $_POST["deleteProduct"];
+        $delProduct = $this->model->deleteProduct($id);
+        $this->showProductAction();
     }
-    public function showUpdateMed($id=null) {
-        $this->view->showUpdateMed($id);
+    public function showUpdateProduct($id=null) {
+        $this->view->showUpdateProduct($id);
     }
-    public function updateMed(){
+    public function updateProduct(){
         $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST,'name');
         $cat = $_POST["cat"];
         $insured = filter_input(INPUT_POST,'insured');
-        $result = $this->model->updateMed($id, $name, $cat, $insured);
-        $this->view->showMed($result);
+        $result = $this->model->updateProduct($id, $name, $cat, $insured);
+        $this->view->showProduct($result);
     }
 //CRUD USER
     public function showUserAction(){
@@ -79,39 +77,7 @@ class Controller{
         $user = $this->model->getUsers($id);
         $this->view->updateUser($user);
     }
-//CRUD PATIENT
-    public function showPatientAction(){
-        $result = $this->model->getPatients();
-        $this->view->showPatients($result);
-    }
-    public function addPatientAction(){
-        $result = "";
-        $this->view->createPatient($result);
-    }
-    public function savePatient() {
-        $naam = filter_input(INPUT_POST,'naam');
-        $huidigeMed = filter_input(INPUT_POST,'huidigeMed');
-        $medHis = filter_input(INPUT_POST,'medHis');
-        $notes = filter_input(INPUT_POST,'notes');
-        $adres = filter_input(INPUT_POST,'adres');
-        $woonplaats = filter_input(INPUT_POST,'woonplaats');
-        $zknummer = filter_input(INPUT_POST,'zknummer');
-        $geboortedatum = filter_input(INPUT_POST,'geboortedatum');
-        $soortVerzekering = $_POST["soortVerzekering"];
-        $this->model->createPatient($naam, $huidigeMed, $medHis, $notes, $adres, $woonplaats, $zknummer, $geboortedatum, $soortVerzekering);
-        $this->showPatientAction();
-    }
-    public function deletePatient() {
-        $id = $_POST["deletePatient"];
-        $delPatient = $this->model->deletePatient($id);
-        $this->showPatientAction();
-    }
-    public function editPatient() {
-        $id = $_POST["editPatient"];
-        $patient = $this->model->getPatients($id);
-        $this->view->updatePatient($patient);
 
-    }
     public function loginAction()
     {
         if (isset($_POST['uname']) && isset($_POST['pswrd'])) {

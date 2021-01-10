@@ -2,12 +2,15 @@
 
 namespace mvc\model;
 
-class Med
+class Product
 {
     private $id;
     private $name;
     private $cat;
-    private $insured;
+    private $price;
+    private $description;
+    private $img;
+
 
     public function __get($property) {
         if (property_exists($this, $property)) {

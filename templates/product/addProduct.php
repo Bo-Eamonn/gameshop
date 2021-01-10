@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthOne | Update Medicijnen</title>
-    <link rel="stylesheet" href="/HealthOne_MVC/assets/css/user.css">
+    <title>HealthOne | Toevoegen Medicijnen</title>
+    <link rel="stylesheet" href="/gameshop/assets/css/user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
@@ -22,25 +22,19 @@ require_once "templates/nav.php";
                     <i class="fa fa-times-circle"></i>
                 </button>
             </form>
-            <?php
-
-            if($id !=null && $id !=0){
-                $med = $this->model->selectMed($id);
-            }           var_dump($this->model->selectMed($id));
-            if(isset($med)){
-            echo '<form action="" method="POST">
+            <form action="" method="POST">
                 <table>
-                    <input type="hidden" name="id" value="'.@$id.'" />
+                    <input type="hidden" name="id" value='' />
                     <tr>
                         <th><label for="name">Medicijn naam</label></th>
                         <th><Label for="cat">Categorie</Label></th>
                         <th><label for="insured">Verzekerd</label></th>
                     </tr>
                     <tr>
-                        <td><input type="text" autocomplete="off" name="name" value="'.@$med->name.'" /></td>
+                        <td><input type="text" required autocomplete="off" name="name" value='' /></td>
                         <td>
-                            <select name="cat">
-                                <option value="'.@$med->cat.'" selected>'.@$med->cat.'</option>
+                            <select required name="cat">
+                                <option value="" disabled selected>Maak een keuze</option>
                                 <option value="ADHD-middelen">ADHD-middelen</option>
                                 <option value="Alzheimer-middelen">Alzheimer-middelen</option>
                                 <option value="Anti-epileptica">Anti-epileptica</option>
@@ -61,21 +55,18 @@ require_once "templates/nav.php";
                         </td>
                         <td>
                             <label for="insured">Ja</label>
-                            <input type="radio" name="insured" value="yes">
+                            <input type="radio" checked name="insured" value="yes">
                             <label for="insured">Nee</label>
                             <input type="radio" name="insured" value="no">
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input onclick="" type="submit" name="updateMed" value="opslaan"></td>
+                        <td><input onclick="" type='submit' name='toevoegenMed' value='opslaan'></td>
                         <td></td>
                     </tr>
                 </table>
-            </form>';
-            } else {
-                echo "Geen Patienten om te Update";
-            }?>
+            </form>
         </div>
     </div>
 </div>
