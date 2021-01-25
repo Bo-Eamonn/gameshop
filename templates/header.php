@@ -2,14 +2,7 @@
 <body class="<?php echo $_SESSION['role']?>">
     <header>
         <div>
-            <img src="/gameshop/assets/images/logo.png" alt="Logo" id="logo">
-            <div class="search-container">
-                <form class="search-box">
-                    <input type="text" placeholder="Zoeken" title="Zoek naar patienten" name="search" autocomplete="off">
-                    <button type="submit"><i title="zoeken..." class="fa fa-search"></i></button>
-                </form>
-                <div class="result"></div>
-            </div>
+            <img src="/gameshop/assets/images/logo.png" onerror='this.src="ASSETS/images/placeholder/missing_img.png"' alt="Logo" id="logo">
             <div>
                 <form action="" method="post">
                     <input type="hidden" name="logout" value="0">
