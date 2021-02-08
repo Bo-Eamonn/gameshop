@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthOne | Toevoegen Medicijnen</title>
-    <link rel="stylesheet" href="/gameshop/assets/css/user.css">
+    <title>GameShop | Add new game</title>
+    <link rel="stylesheet" href="/gameshop/assets/css/normaliz.css">
+    <link rel="stylesheet" href="/gameshop/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
 <?php
 require_once "templates/header.php";
-require_once "templates/nav.php";
 ?>
-<div id="medAddModal" class="modal">
-    <div class="medModal-container">
+<div id="gameAddModal" class="modal">
+    <div class="gameModal-container">
         <div>
             <form action="" method="post">
-                <button type="submit" name="cancelMed" class="close" title="Sluiten">
+                <button type="submit" name="cancelProduct" class="close" title="Sluiten">
                     <i class="fa fa-times-circle"></i>
                 </button>
             </form>
@@ -26,38 +26,30 @@ require_once "templates/nav.php";
                 <table>
                     <input type="hidden" name="id" value='' />
                     <tr>
-                        <th><label for="name">Medicijn naam</label></th>
-                        <th><Label for="cat">Categorie</Label></th>
-                        <th><label for="insured">Verzekerd</label></th>
+                        <th><label for="name">Game</label></th>
+                        <th><Label for="description">Beschrijving</Label></th>
+                        <th><label for="cat">Categorie</label></th>
+                        <th><label for="price">prijs</label></th>
+                        <th><label for="stock">Stock</label></th>
                     </tr>
                     <tr>
                         <td><input type="text" required autocomplete="off" name="name" value='' /></td>
+                        <td><input type="text" required autocomplete="off" name="description" value='' /></td>
                         <td>
                             <select required name="cat">
                                 <option value="" disabled selected>Maak een keuze</option>
-                                <option value="ADHD-middelen">ADHD-middelen</option>
-                                <option value="Alzheimer-middelen">Alzheimer-middelen</option>
-                                <option value="Anti-epileptica">Anti-epileptica</option>
-                                <option value="Antidepressiva en lithium">Antidepressiva en lithium</option>
-                                <option value="Antihistaminica">Antihistaminica</option>
-                                <option value="Antipsychotica">Antipsychotica</option>
-                                <option value="Benzodiazepinen">Benzodiazepinen</option>
-                                <option value="Hoestmiddelen">Hoestmiddelen</option>
-                                <option value="Hoofdpijnmiddelen">Hoofdpijnmiddelen</option>
-                                <option value="Incontinentie-middelen">Incontinentie-middelen</option>
-                                <option value="Middelen bij kanker">Middelen bij kanker</option>
-                                <option value="Ontwenningsmiddelen">Ontwenningsmiddelen</option>
-                                <option value="Opioïden">Opioïden</option>
-                                <option value="Parkinsonmiddelen">Parkinsonmiddelen</option>
-                                <option value="Maagdarmmiddelen">Maagdarmmiddelen</option>
-                                <option value="Overig">Overig</option>
+                                <option value="PC">PC</option>
+                                <option value="PS4">PS4</option>
+                                <option value="PS5">PS5</option>
+                                <option value="Xbox">Xbox</option>
+                                <option value="Mobile">Mobile</option>
                             </select>
                         </td>
                         <td>
-                            <label for="insured">Ja</label>
-                            <input type="radio" checked name="insured" value="yes">
-                            <label for="insured">Nee</label>
-                            <input type="radio" name="insured" value="no">
+                            <input type="number" required name="price" min="0.01" value="" step=".01">
+                        </td>
+                        <td>
+                            <input type="number" required name="stock" min="1" value="" step="1">
                         </td>
                     </tr>
                     <tr>
