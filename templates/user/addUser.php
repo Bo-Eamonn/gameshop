@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthOne | Toevoegen User</title>
-    <link rel="stylesheet" href="/gameshop/assets/css/user.css">
+    <title>gameshop | Toevoegen User</title>
+    <link rel="stylesheet" href="/gameshop/assets/css/normaliz.css">
+    <link rel="stylesheet" href="/gameshop/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
 <?php
 require_once "templates/header.php";
-require_once "templates/nav.php";
 ?>
 <div id="userAddModal" class="modal">
     <div class="userModal-container">
@@ -38,8 +38,7 @@ require_once "templates/nav.php";
                             <select required name="role">
                                 <option value="" disabled selected>Maak een keuze</option>
                                 <option value="admin" >admin</option>
-                                <option value="apotheek" >apotheek</option>
-                                <option value="arts" >arts</option>
+                                <option value="customer" >customer</option>
                             </select>
                         </td>
                         
