@@ -29,8 +29,10 @@ class Controller{
     public function saveProduct() {
         $name = filter_input(INPUT_POST,'name');
         $cat = $_POST["cat"];
-        $insured = filter_input(INPUT_POST,'insured');
-        $this->model->createProduct($name, $cat, $insured);
+        $description = filter_input(INPUT_POST,'description');
+        $price = filter_input(INPUT_POST,'price');
+        $stock = filter_input(INPUT_POST,'stock');
+        $this->model->createProduct($name, $cat, $description, $price, $stock);
         $this->showProductAction();
     }
     public function deleteProduct() {
@@ -45,8 +47,10 @@ class Controller{
         $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST,'name');
         $cat = $_POST["cat"];
-        $insured = filter_input(INPUT_POST,'insured');
-        $result = $this->model->updateProduct($id, $name, $cat, $insured);
+        $description = filter_input(INPUT_POST,'description');
+        $price = filter_input(INPUT_POST,'price');
+        $stock = filter_input(INPUT_POST,'stock');
+        $result = $this->model->createProduct($id,$name, $cat, $description, $price, $stock);
         $this->view->showProduct($result);
     }
 //CRUD USER
@@ -86,7 +90,6 @@ class Controller{
             $this->model->login($uname, $pswrd);
         
             if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-                $this->model->getHome();
                 $this->view->showHome();
             } else {
                 $this->view->showLogin();
@@ -97,7 +100,6 @@ class Controller{
     }
     
     public function showHomeAction(){
-        $this->model->getHome();
         $this->view->showHome();
     }
 
