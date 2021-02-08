@@ -40,25 +40,17 @@ class Model
     exit;
     }
 
-//Read Home
 
-public function getHome(){
-    if(1+1==2) {
-    $text = "Last Login ";
-    $date = date("F j, Y, g:i a");
-    $result = $text.$date;
-    return $result;
-    }
-    return null;
-}
 //Create New Product
-    public function createProduct($name,$cat,$insured){
+    public function createProduct($name,$description,$cat,$price,$stock){
         $this->connectDb();
-        if ($name !='' && $cat !='' && $insured !='') {
-            $query = $this->db->prepare("INSERT INTO `products` (`id`, `name`, `cat`, `insured`) VALUES ('',:name, :cat, :insured)");
+        if ($name !='' && $description !='' && $cat !='' && $price !='' && $stock !='') {
+            $query = $this->db->prepare("INSERT INTO `products` (`id`, `name`, `description`, `cat`, `price`, `stock` ) VALUES ('',:name,:description,:cat,:price,:stock)");
             $query->bindParam(":name", $name); 
+            $query->bindParam(":description", $description); 
             $query->bindParam(":cat", $cat); 
-            $query->bindParam(":insured", $insured); 
+            $query->bindParam(":price", $price); 
+            $query->bindParam(":stock", $stock); 
             $result = $query->execute();
             return $result;
         }
@@ -75,14 +67,16 @@ public function getHome(){
         return null;      
     }    
 //Update Product
-    public function updateProduct($id,$name,$cat,$insured){
+    public function updateProduct($id,$name,$description,$cat,$price,$stock){
         $this->connectDb();
-        if ($name !='' && $cat !='' && $insured !='') {
-            $query = $this->db->prepare("UPDATE `products` SET `name`=:name, `cat`=:cat, `insured`=:insured WHERE `products`.`id`=:id");
+        if ($name !='' && $description !='' && $cat !='' && $price !='' && $stock !='') {
+            $query = $this->db->prepare("UPDATE `products` SET `name`=:name, `cat`=:cat, `description`=:description, `price`=:price, `stock`=:stock WHERE `products`.`id`=:id");
             $query->bindParam(":id", $id);
-            $query->bindParam(":name", $name);  
-            $query->bindParam(":cat", $cat); 
-            $query->bindParam(":insured", $insured); 
+            $query->bindParam(":name", $name);
+            $query->bindParam(":description", $description);
+            $query->bindParam(":cat", $cat);
+            $query->bindParam(":price", $price);
+            $query->bindParam(":stock", $stock);
             $result = $query->execute();
             return $result;
         }
