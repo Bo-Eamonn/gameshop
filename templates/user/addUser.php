@@ -31,8 +31,8 @@ require_once "templates/header.php";
                         <th><label for="role">Gebruikers Role</label></th>
                     </tr>
                     <tr>
-                        <td><input type="text" required autocomplete="off" name="uname" value='' /></td>
-                        <td><input type="text" required autocomplete="off" name="pswrd" value='' /></td>
+                        <td><input type="text" required placeholder="Gebruikersnaam" autocomplete="off" name="uname" value='' /></td>
+                        <td><input type="text" required placeholder="Wachtwoord" autocomplete="off" name="pswrd" value='' /></td>
                         
                         <td>
                             <select required name="role">
