@@ -25,6 +25,7 @@ class Model
             $user = $query->fetch();
             if ($user) {
                 $gehashtpassword = strtoupper(hash("sha256", $pswrd));
+                // var_dump($gehashtpassword);  use to check if password was hased
                 if ($user->getPswrd() == $gehashtpassword) {
                     $_SESSION['username'] = $user->getUname();
                     $_SESSION['role'] = $user->getRole();
@@ -134,6 +135,7 @@ class Model
             $query->bindParam(":id", $id);
             $query->bindParam(":uname", $uname); 
             $query->bindParam(":pswrd", $pswrd);  
+            $query->bindParam(":role", $role);  
             $result = $query->execute();
             return $result;
         }

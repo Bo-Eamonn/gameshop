@@ -9,7 +9,7 @@ class Product
     private $cat;
     private $price;
     private $description;
-    private $img;
+    private $stock;
 
 
     public function __get($property) {
