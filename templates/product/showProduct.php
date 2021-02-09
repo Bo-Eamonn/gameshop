@@ -18,22 +18,28 @@ require_once "templates/header.php";
     <form action="" method="post">
         <button class="notVisible" type="submit" name="showAddProduct">Toevoegen</button>
     </form>
-    <div class="table">
+    <div class="productContainer">
         <?php                      
         foreach ($result as $product) {
-            echo "<div class='product'>";
-            echo "<table>";  
-            echo "<tr>";    
-            echo "<td>" . $product->name . " </td>";
-            echo "<td>" . $product->description . " </td>";
-            echo "<td>€" . $product->price . " </td>";
-            echo "<td class='notVisible'>" . "<form action='' method='post'>
-            <button type='submit' value='$product->id' name='showUpdateproduct' ><i class='fa fa-pen'></i></button>
-            <button type='submit' value='$product->id' name='deleteproduct' ><i class='fa fa-trash'></i></button>
-            </form>" . " </td>";
-            echo "</tr>";
-            echo "</table>";     
-            echo "</div>";
+            echo '<div class="card">';
+                echo'<img src="/gameshop/assets/images/products/'.$product->name.'.png" alt="'.$product->name.'" style="width:100%" 
+                onerror="this.src=\'/gameshop/assets/images/placeholder/missing_img.png\'">';
+                echo '<div class="productContentWrap">';
+                    echo '<h2>'.$product->name.'</h2>';
+                    echo '<div class="two">';
+                        echo '<p class="price">prijs € '.$product->price.'</p>';
+                        echo '<p class="stock">Voorraad: '.$product->stock.'</p>';
+                    echo '</div> <br>';
+                    echo '<p class="desc">'.$product->description.'</p>';
+                    echo '<p><button>Add to Cart</button></p>';
+                    echo '<div class="edit">';
+                        echo "<form action='' method='post'>
+                        <button type='submit' value='$product->id' name='showUpdateproduct' ><i class='fa fa-pen'></i></button>
+                        <button type='submit' value='$product->id' name='deleteproduct' ><i class='fa fa-trash'></i></button>
+                        </form>";
+                    echo'</div>';
+                echo '</div>';
+            echo '</div>';
             }
 
         ?>
