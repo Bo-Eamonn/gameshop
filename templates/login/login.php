@@ -25,6 +25,7 @@
                     <i class="far fa-eye" id="pswrdToggle"></i>
             </div> 
             <button name="inloggen" type="submit">Inloggen</button>
+            <button onclick="window.history.back();">Terug</button>
         </form>
     </div>
     <script src="/gameshop/assets/js/pswrdToggle.js"></script>
