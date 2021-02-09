@@ -7,12 +7,16 @@
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search">zoek</i>
                 </button>
-            </div>
+            </div>  
         </div>
         <div id="mySidenav" class="sideNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">Home</a>
-            <a href="#">Bekijk producten</a>
+            <form action="" method="post">
+            <button class="login-btn" type="submit" name="inloggen">Login <i class="fas fa-sign-in-alt"></i></button>
+            <button class="login-btn" type="submit" name="logout">Log uit <i class="fas fa-sign-out-alt"></i></button>
+            <button type="submit" name="user">Users</button>
+            <button type="submit" name="products">Products</button>
+            </form>
         </div>
         <div id="centreermenu">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
