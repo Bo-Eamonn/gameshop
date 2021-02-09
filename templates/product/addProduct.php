@@ -54,7 +54,7 @@ require_once "templates/header.php";
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input onclick="" type='submit' name='toevoegenMed' value='opslaan'></td>
+                        <td><input onclick="" type='submit' name='toevoegenProduct' value='opslaan'></td>
                         <td></td>
                     </tr>
                 </table>
