@@ -90,7 +90,8 @@ class Controller{
             $this->model->login($uname, $pswrd);
         
             if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-                $this->view->showHome();
+                $result = $this->model->getProduct();
+                $this->view->showProduct($result);
             } else {
                 $this->view->showLogin();
             }
