@@ -12,7 +12,7 @@ $controller = new Controller();
             $controller->logoutAction();
         }
 //CRUD PRODUCTS        
-        elseif (isset($_POST['']) || isset($_POST['cancelProduct'])) {
+        elseif (isset($_POST['products']) || isset($_POST['cancelProduct'])) {
             $controller->showProductAction();
         }elseif (isset($_POST['showAddProduct'])) {
             $controller->addProductAction();
@@ -38,8 +38,21 @@ $controller = new Controller();
             $controller->editUser();
         }
         else {
-            $controller->showHomeAction();
+            $controller->showProductAction();
         }
+//Customer login        
+    }elseif (isset($_SESSION['role']) && $_SESSION['role']=="customer") {
+        if (isset($_POST['logout'])){
+            $controller->logoutAction();
+        }elseif (isset($_POST['products'])){
+            $controller->showProductAction();
+        }else {
+            $controller->showProductAction();
+        }
+    }
+//If not logged in as Admin
+    elseif(isset($_POST['inloggen'])){
+        $controller->loginAction();
     } else {
         $controller->showProductAction();
     }
