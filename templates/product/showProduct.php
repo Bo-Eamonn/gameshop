@@ -34,8 +34,8 @@ require_once "templates/header.php";
                     echo '<p><button>Add to Cart</button></p>';
                     echo '<div class="edit">';
                         echo "<form action='' method='post'>
-                        <button type='submit' value='$product->id' name='showUpdateproduct' ><i class='fa fa-pen'></i></button>
-                        <button type='submit' value='$product->id' name='deleteproduct' ><i class='fa fa-trash'></i></button>
+                        <button type='submit' value='$product->id' name='showUpdateProduct' ><i class='fa fa-pen'></i></button>
+                        <button type='submit' value='$product->id' name='deleteProduct' ><i class='fa fa-trash'></i></button>
                         </form>";
                     echo'</div>';
                 echo '</div>';

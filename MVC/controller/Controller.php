@@ -100,10 +100,6 @@ class Controller{
         }
     }
     
-    public function showHomeAction(){
-        $this->view->showHome();
-    }
-
     public function logoutAction(){
         $this->model->logout();
         $this->view->showLogin();

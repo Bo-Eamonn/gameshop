@@ -30,9 +30,6 @@ class View{
     }
 
 // READ
-    public function showHome(){ 
-        require ('templates/login/showHome.php');
-    }
     public function showProduct($result){
         require ('templates/product/showProduct.php');
     }
@@ -40,6 +37,8 @@ class View{
         require ('templates/user/showUser.php');
     }
 // UPDATE
+// TO pages where made cause didn't get Update part working.
+
     public function showUpdateProduct($id=NULL){
             require ('templates/product/updateProduct.php');
     }
