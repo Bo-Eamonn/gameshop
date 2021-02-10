@@ -1,4 +1,8 @@
-# Gameshop
+#WEBSHOP
+
+Dit project is gemaakt voor een havo 5 persoon. In totaal iets van 2 dagen tijd. In de toekomst zal ik dit project nog updaten en voledig werkend krijgen.
+
+## Gameshop 
 
 #### Opbouw
 
